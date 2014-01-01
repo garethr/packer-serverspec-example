@@ -1,0 +1,8 @@
+---
+classes:
+  - locales
+  - motd
+  - timezone
+  - ntp
+timezone:timezone: 'UTC'
+ntp:ensure: latest

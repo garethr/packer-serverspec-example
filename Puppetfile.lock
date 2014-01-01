@@ -1,0 +1,16 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    puppetlabs/ntp (3.0.1)
+      puppetlabs/stdlib (>= 0.1.6)
+    puppetlabs/stdlib (4.1.0)
+    saz/locales (2.0.0)
+    saz/motd (2.0.3)
+    saz/timezone (1.2.0)
+
+DEPENDENCIES
+  puppetlabs/ntp (>= 0)
+  saz/locales (>= 0)
+  saz/motd (>= 0)
+  saz/timezone (>= 0)
+
