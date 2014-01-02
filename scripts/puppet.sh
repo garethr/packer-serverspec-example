@@ -1,4 +1,5 @@
 # Install Ruby
+sudo apt-get update
 sudo apt-get install ruby rubygems -y
 
 # Install puppet/facter
