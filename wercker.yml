@@ -14,11 +14,14 @@ build:
           unzip 0.5.0_linux_amd64.zip
           ./packer version
     - script:
+        name: vallidate packer template
+        code: ./packer validate template.json
+    - script:
         name: build image
         code: ./packer build template.json
     - script:
         name: make build directory
         code: |
-          mkdir -P "$WERCKER_OUTPUT_DIR"
+          mkdir -p "$WERCKER_OUTPUT_DIR"
           touch "{$WERCKER_OUTPUT_DIR}/image"
 
