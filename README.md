@@ -1,5 +1,10 @@
 # Packer Serverspec Example
 
+[![wercker
+status](https://app.wercker.com/status/e0e5ae1131427238297c028dbcc2bfeb
+"wercker
+status")](https://app.wercker.com/project/bykey/e0e5ae1131427238297c028dbcc2bfeb)
+
 [Packer](http://www.packer.io/) provides a great way of describing the steps
 for creating a virtual machine image. But it doesn't have a built-in way
 of verifying those images.
