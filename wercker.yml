@@ -28,4 +28,4 @@ build:
         to: gareth@morethanseven.net
         username: $SMTP_USER
         password: $SMTP_PASSWORD
-        host: $SMTP_HOSY
+        host: $SMTP_HOST
