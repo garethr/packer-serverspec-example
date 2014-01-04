@@ -8,20 +8,24 @@ build:
         name: install puppet modules
         code: bundle exec librarian-puppet install
     - script:
-        name: install packer
+        name: install packer if required
         code: |
-          wget https://dl.bintray.com/mitchellh/packer/0.5.0_linux_amd64.zip
-          unzip 0.5.0_linux_amd64.zip
-          ./packer version
+          if [ -f "$WERKER_CACHE_DIR/packer" ];
+          then
+            info "Packer already installed from cache"
+          else
+            info "Installing Packer"
+            curl -o "$WERCKER_CACHE_DIR/packer.zip" "https://dl.bintray.com/mitchellh/packer/0.5.0_linux_amd64.zip"
+            cd $WERCKER_CACHE_DIR
+            unzip "${WERCKER_CACHE_DIR}/packer.zip"
+          fi
+          $WERCKER_CACHE_DIR/packer version | tee $WERCKER_REPORT_MESSAGE_FILE
     - script:
         name: validate packer template
-        code: ./packer validate template.json
-    - script:
-        name: build image
-        code: ./packer build template.json
+        code: $WERCKER_CACHE_DIR/packer validate template.json | tee $WERCKER_REPORT_MESSAGE_FILE
     - script:
         name: make build directory
-        code: |
-          mkdir -p "$WERCKER_OUTPUT_DIR"
-          touch "${WERCKER_OUTPUT_DIR}/image"
-
+        code: mkdir -p "$WERCKER_OUTPUT_DIR"
+    - script:
+        name: build image
+        code: $WERCKER_CACHE_DIR/packer build template.json | tee "${WERKER_OUTPUT_DIR}/packer_build_output.log"
