@@ -21,4 +21,11 @@ build:
         code: mkdir -p "$WERCKER_OUTPUT_DIR"
     - script:
         name: build image
-        code: ./packer build template.json | tee "${WERKER_OUTPUT_DIR}/packer_build_output.log"
+        code: ./packer build template.json | tee "${WERCKER_OUTPUT_DIR}/packer_build_output.log"
+  after-steps:
+    - mies/email-notify:
+        from: alerts@wercker.com
+        to: gareth@morethanseven.net
+        username: $SMTP_USER
+        password: $SMTP_PASSWORD
+        host: $SMTP_HOSY
