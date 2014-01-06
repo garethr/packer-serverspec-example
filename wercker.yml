@@ -24,7 +24,7 @@ build:
         code: ./packer build template.json | tee "${WERCKER_OUTPUT_DIR}/packer_build_output.log"
   after-steps:
     - mies/email-notify:
-        from: alerts@wercker.com
+        from: gareth@morethanseven.net
         to: gareth@morethanseven.net
         username: $SMTP_USER
         password: $SMTP_PASSWORD
