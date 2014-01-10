@@ -18,7 +18,7 @@ build:
         code: ./packer validate template.json | tee $WERCKER_REPORT_MESSAGE_FILE
     - script:
         name: build image
-        code: ./packer build template.json | tee "${WERCKER_REPORT_ARTIFACT_DIR}/packer_build_output.log"
+        code: ./packer build template.json | tee "${WERCKER_REPORT_ARTIFACTS_DIR}/packer_build_output.log"
   after-steps:
     - mies/email-notify:
         from: gareth@morethanseven.net
