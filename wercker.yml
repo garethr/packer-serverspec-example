@@ -22,7 +22,7 @@ build:
           ./packer build template.json | tee "${WERCKER_REPORT_ARTIFACTS_DIR}/packer_build_output.log"
           tail -n 1 "${WERCKER_REPORT_ARTIFACTS_DIR}/packer_build_output.log" | tee $WERCKER_REPORT_MESSAGE_FILE
   after-steps:
-    - email-notify:
+    - wouter/email-notify:
         from: gareth@morethanseven.net
         to: gareth@morethanseven.net
         username: $SMTP_USER
